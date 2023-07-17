@@ -25,10 +25,10 @@ const createAndSavePerson = (done) => {
   personDoc.save((err, data) => {
     if (err) return console.log('error', err)
 
-    console.log('data', data)
+    done(null, data);
   })
 
-  done(null /*, data*/);
+  
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
