@@ -9,7 +9,15 @@ const options = {
 
 mongoose.connect(mongoUri, options)
 
-let Person;
+const {Schema, model} = mongoose
+
+const personSchema = new Schema({
+  name: String,
+  age: Number,
+  favoriteFoods: [String]
+})
+
+let Person = model('Person', personSchema)
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
