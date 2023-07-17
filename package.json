@@ -2,15 +2,15 @@
   "name": "fcc-mongo-mongoose-challenges",
   "version": "0.0.1",
   "description": "A boilerplate project",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "server": "nodemon server"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
     "dotenv": "^8.2.0",
     "express": "^4.12.4",
-    "mongoose": "^5.11.15"
+    "mongoose": "^5.11.15",
+    "nodemon": "^3.0.1"
   },
   "repository": {
     "type": "git",
