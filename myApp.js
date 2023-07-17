@@ -60,11 +60,10 @@ const manyPeople = [
 ]
 
 const createManyPeople = (arrayOfPeople = manyPeople, done) => {
-  const peopleDocs = Person.create(arrayOfPeople)
-
-  peopleDocs.save((err, data) => {
+  Person.create(arrayOfPeople, (err, people) => {
     if(err) return console.error(err)
-    done(null, data);
+
+    done(null, people)
   })
 };
 
