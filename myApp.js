@@ -20,6 +20,14 @@ const personSchema = new Schema({
 let Person = model('Person', personSchema)
 
 const createAndSavePerson = (done) => {
+  const personDoc = new Person({name: "Deyvon Bennet", age: 26, favoriteFoods: ["Mozarrela", "Nsima", "Soda"]})
+
+  personDoc.save((err, data) => {
+    if (err) return console.log('error', err)
+
+    console.log('data', data)
+  })
+
   done(null /*, data*/);
 };
 
