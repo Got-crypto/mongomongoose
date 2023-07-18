@@ -115,8 +115,11 @@ const removeById = (personId, done) => {
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
+  const removeQuery = {
+    name: nameToRemove
+  }
 
-  done(null /*, data*/);
+  Person.remove(removeQuery, (err, response) => handleCallbacks(err, response, done))
 };
 
 const queryChain = (done) => {
