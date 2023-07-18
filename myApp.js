@@ -124,8 +124,15 @@ const removeManyPeople = (done) => {
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
+  const findQuery = {
+    favoriteFoods: foodToSearch
+  }
 
-  done(null /*, data*/);
+  Person.find(findQuery)
+    .sort("name")
+    .limit(2)
+    .select("name", "favoriteFoods")
+    .exec((err, data) => handleCallbacks(err, data, done))
 };
 
 /** **Well Done !!**
