@@ -129,9 +129,9 @@ const queryChain = (done) => {
   }
 
   Person.find(findQuery)
-    .sort("name")
+    .sort({name: 1})
     .limit(2)
-    .select("name", "favoriteFoods")
+    .select({name: 1, favoriteFoods: 1, age: 0})
     .exec((err, data) => handleCallbacks(err, data, done))
 };
 
