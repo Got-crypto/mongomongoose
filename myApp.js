@@ -73,7 +73,7 @@ const findPeopleByName = (personName, done) => {
 
 const findOneByFood = (food, done) => {
   const personQuery = {
-    food: food
+    favoriteFoods: food
   }
   
   Person.findOne(personQuery, (err, result) => handleCallbacks(err, result, done))
