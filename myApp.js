@@ -110,7 +110,7 @@ const findAndUpdate = (personName, done) => {
 };
 
 const removeById = (personId, done) => {
-  Person.findByIdAndRemove(personId, (err, data) => handleCallbacks(err, data))
+  Person.findByIdAndRemove(personId, (err, data) => handleCallbacks(err, data, done))
 };
 
 const removeManyPeople = (done) => {
