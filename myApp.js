@@ -132,7 +132,7 @@ const queryChain = (done) => {
     .sort({name: 1})
     .limit(2)
     .select({name: 1, favoriteFoods: 1, age: 0})
-    .exec((err, data) => handleCallbacks(err, data, done))
+    .exec((err, data) => done(err, data))
 };
 
 /** **Well Done !!**
