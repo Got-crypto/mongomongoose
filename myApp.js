@@ -19,14 +19,16 @@ const personSchema = new Schema({
 
 let Person = model('Person', personSchema)
 
+const handleCallbacks = (err, result, done) => {
+  if(err) return console.error(err)
+
+  done(null, result)
+}
+
 const createAndSavePerson = (done) => {
   const personDoc = new Person({name: "Deyvon Bennet", age: 26, favoriteFoods: ["Mozarrela", "Nsima", "Soda"]})
 
-  personDoc.save((err, data) => {
-    if (err) return console.log('error', err)
-
-    done(null, data);
-  })
+  personDoc.save((err, data) => handleCallbacks(err, data, done))
 
   
 };
@@ -60,36 +62,21 @@ const manyPeople = [
 ]
 
 const createManyPeople = (arrayOfPeople = manyPeople, done) => {
-  Person.create(arrayOfPeople, (err, people) => {
-    if(err) return console.error(err)
-
-    done(null, people)
-  })
+  Person.create(arrayOfPeople, (err, people) => handleCallbacks(err, people, done))
 };
 
 const findPeopleByName = (personName, done) => {
   const personQuery = {name: personName}
   
-  Person.find(personQuery, (err, results) => {
-    if(err) return console.error(err)
-
-    done(null, results);
-  })
+  Person.find(personQuery, (err, results) => handleCallbacks(err, results, done))
 };
 
 const findOneByFood = (food, done) => {
-  
   const personQuery = {
     food: food
   }
-
-  const handleFindOne = (err, result) => {
-    if(err) return console.error(err)
-
-    done(null, result)
-  }
   
-  Person.findOne(personQuery, handleFindOne)
+  Person.findOne(personQuery, (err, result) => handleCallbacks(err, result, done))
 };
 
 const findPersonById = (personId, done) => {
